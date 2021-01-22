@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+//import components here
+import Button from './components/buttonComponent';
+import Display from './components/Display';
+
+import { useState } from "react";
+//useState is how to keep track of state using react hooks
+//a, b = useState()
+//a) state object(getter)
+//b) updater function(setter)
+//syntax const[a, b]=useState(initialStateValue);
 
 function App() {
+  const [counter, setCounter] = useState(24);
+  const incrementCounter = (incrementValue) => setCounter(counter+incrementValue);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Button onClickFunc={incrementCounter} increment={1}/>
+      <Button onClickFunc={incrementCounter} increment={2}/>
+      <Button onClickFunc={incrementCounter} increment={4}/>
+      <Button onClickFunc={incrementCounter} increment={8}/>
+      <Display message={counter}/>
     </div>
   );
 }
